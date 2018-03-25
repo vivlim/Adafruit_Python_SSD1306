@@ -2,7 +2,7 @@ import subprocess
 import socket
 import os
 
-from menu.vertical_list_view import VerticalListView
+from vertical_list_view import VerticalListView
 
 
 class RootMenu(VerticalListView):

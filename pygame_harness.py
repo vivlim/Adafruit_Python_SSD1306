@@ -1,8 +1,8 @@
 import pygame
 
-from menu.view_manager import ViewManager
-from menu.vertical_list_view import VerticalListView
-from menu.root_menu import RootMenu
+from view_manager import ViewManager
+from vertical_list_view import VerticalListView
+from root_menu import RootMenu
 
 
 size = (128, 64)
