@@ -27,9 +27,8 @@ import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
-from menu.view_manager import ViewManager
-from menu.vertical_list_view import VerticalListView
 from root_menu import RootMenu
+from view_manager import ViewManager
 
 
 # Input pins:
