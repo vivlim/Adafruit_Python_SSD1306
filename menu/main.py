@@ -29,6 +29,7 @@ import Adafruit_SSD1306
 
 from menu.view_manager import ViewManager
 from menu.vertical_list_view import VerticalListView
+from root_menu import RootMenu
 
 
 # Input pins:
@@ -104,7 +105,7 @@ width = disp.width
 height = disp.height
 size = (width, height)
 
-root_view = VerticalListView(["Hello world!", "TODO: actual functional items", "yep"], size)
+root_view = RootMenu(size)
 view_manager = ViewManager(size, root_view, '1')
 
 try:
