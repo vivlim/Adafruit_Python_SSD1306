@@ -2,6 +2,7 @@ import pygame
 
 from menu.view_manager import ViewManager
 from menu.vertical_list_view import VerticalListView
+from menu.root_menu import RootMenu
 
 
 size = (128, 64)
@@ -12,7 +13,7 @@ pygame.display.flip()
 
 running = True
 
-root_view = VerticalListView(["foo", "bar", "baz", "4", "5", "6", "7", "8", "9", "10 ---", "11", "12", "13"], size)
+root_view = RootMenu(size)
 
 renderer = ViewManager(size, root_view, "RGB")
 while running:
@@ -33,3 +34,13 @@ while running:
                 renderer.handle_key('up')
             if event.key == pygame.K_DOWN:
                 renderer.handle_key('down')
+            if event.key == pygame.K_LEFT:
+                renderer.handle_key('left')
+            if event.key == pygame.K_RIGHT:
+                renderer.handle_key('right')
+            if event.key == pygame.K_z or event.key == pygame.K_a:
+                renderer.handle_key('a')
+            if event.key == pygame.K_x or event.key == pygame.K_b:
+                renderer.handle_key('b')
+            if event.key == pygame.K_c:
+                renderer.handle_key('middle')
