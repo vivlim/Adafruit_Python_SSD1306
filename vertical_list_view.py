@@ -1,24 +1,32 @@
 from PIL import ImageFont
+from view import View
 
-class VerticalListView:
-    def __init__(self, items, size):
+class VerticalListView(View):
+    def __init__(self, items):
+        super().__init__()
         self.left_margin = 4
         self.right_margin = 3
-        self.size = (size[0] - self.right_margin, size[1])
         self.selected_item = 0
         self.items_to_show_above_selected = 3
 
         self.font = ImageFont.load("tom-thumb.pil")
         self.font_bbox = self.font.getmask("A").getbbox()
         self.font_line_height = self.font_bbox[3] + 1
-        self.lines_per_screen = self.size[1] / self.font_line_height
-        self.selection_rect_size = (self.size[0], self.font_bbox[3])
 
         # if you passed in strings, wrap in dict
         if isinstance(items[0], str):
             self.items = [{'label': x} for x in items]
         else:
             self.items = items
+
+        self.lines_per_screen = 0  # update when size is known
+        self.selection_rect_size = 0  # update when size is known
+
+
+    def set_size(self, size):
+        self.size = (size[0] - self.right_margin, size[1])
+        self.lines_per_screen = self.size[1] / self.font_line_height
+        self.selection_rect_size = (self.size[0], self.font_bbox[3])
 
     def get_visible_item_bounds(self):
         if len(self.items) > self.lines_per_screen:

@@ -104,7 +104,7 @@ width = disp.width
 height = disp.height
 size = (width, height)
 
-root_view = RootMenu(size)
+root_view = RootMenu()
 view_manager = ViewManager(size, root_view, '1')
 
 try:

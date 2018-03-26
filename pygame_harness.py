@@ -13,7 +13,7 @@ pygame.display.flip()
 
 running = True
 
-root_view = RootMenu(size)
+root_view = RootMenu()
 
 renderer = ViewManager(size, root_view, "RGB")
 while running:

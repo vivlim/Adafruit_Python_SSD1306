@@ -1,3 +1,4 @@
+from enum import Enum
 from PIL import Image
 from PIL import ImageDraw
 
@@ -6,7 +7,8 @@ class ViewManager:
         self.size = size
         self.image = Image.new(mode, size)
         self.draw = ImageDraw.Draw(self.image)
-        self.views = [root_view]
+        self.views = []
+        self.add_view(root_view)
 
     def get_frame(self):
         width, height = self.size
@@ -17,6 +19,14 @@ class ViewManager:
 
     def get_top_view(self):
         return self.views[len(self.views)-1]
+
+    def add_view(self, view):
+        view.set_view_manager(self)
+        view.set_size(self.size)
+        self.views.append(view)
+
+    def remove_top_view(self):
+        self.views.pop()
 
     def handle_key(self, key_name):
         self.get_top_view().handle_key(key_name)
