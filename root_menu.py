@@ -61,7 +61,7 @@ class RootMenu(VerticalListView):
         self.view_manager.add_view(reset_hard_menu)
 
     def menu_reload(self):
-        os.execv(sys.executable, sys.argv)
+        os.execv(sys.executable, ["python3"] + sys.argv)
 
 
     def menu_get_ip(self):
