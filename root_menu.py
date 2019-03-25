@@ -6,10 +6,14 @@ import sys
 from command_output_view import CommandOutputView
 
 from vertical_list_view import VerticalListView
+from usb_gadget import manage_gadgets, gadget_defs
+
 
 class RootMenu(VerticalListView):
     def __init__(self):
         items = [
+                {"label": "gadget test",
+                 "action": self.menu_gadget_test},
                 {"label": "dmesg",
                  "action": self.menu_dmesg},
                 {"label": "Throw exception",
@@ -28,7 +32,7 @@ class RootMenu(VerticalListView):
                  "format_values": self.menu_get_ip},
                 {"label": "exit",
                  "action": self.menu_exit},
-                ]
+        ]
         super().__init__(items)
 
     def menu_do_poweroff(self):
@@ -42,6 +46,10 @@ class RootMenu(VerticalListView):
 
     def menu_throw(self):
         raise NotImplementedError("awoo")
+
+    def menu_gadget_test(self):
+        gadget = gadget_defs.base + gadget_defs.keyboard
+        manage_gadgets.create_gadget("viv2", gadget)
 
     def menu_dmesg(self):
         self.view_manager.add_view(CommandOutputView(["dmesg"]))
