@@ -10,7 +10,6 @@ from vertical_list_view import VerticalListView
 class RootMenu(VerticalListView):
     def __init__(self):
         items = [
-                {"label": "Hello world!"},
                 {"label": "dmesg",
                  "action": self.menu_dmesg},
                 {"label": "Throw exception",
@@ -26,7 +25,9 @@ class RootMenu(VerticalListView):
                 {"label": "reload",
                  "action": self.menu_reload},
                 {"label": "IP Address: {ip}",
-                 "format_values": self.menu_get_ip}
+                 "format_values": self.menu_get_ip},
+                {"label": "exit",
+                 "action": self.menu_exit},
                 ]
         super().__init__(items)
 
@@ -63,6 +64,8 @@ class RootMenu(VerticalListView):
     def menu_reload(self):
         os.execv(sys.executable, ["python3"] + sys.argv)
 
+    def menu_exit(self):
+        exit()
 
     def menu_get_ip(self):
         # IP retrieval from https://stackoverflow.com/a/1267524
